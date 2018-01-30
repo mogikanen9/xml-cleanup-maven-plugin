@@ -14,6 +14,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 
 import com.mogikanensoftware.maven.plugins.xml.cleanup.file.FileService;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.file.FileServiceException;
+import com.mogikanensoftware.maven.plugins.xml.cleanup.file.impl.ExtensionFileFilter;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.file.impl.FileServiceImpl;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.rule.Rule;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.rule.impl.XPathRule;
@@ -29,6 +30,9 @@ public class MyMojo extends AbstractMojo {
 
 	@Parameter(property = "sourceFolder")
 	private File sourceFolder;
+	
+	@Parameter(property = "sourceFolderFilter")
+	private String sourceFolderFilter;
 
 	@Parameter(property = "destFolder")
 	private File destFolder;
@@ -56,11 +60,12 @@ public class MyMojo extends AbstractMojo {
 		this.cleanupService = cleanupService;
 	}
 
-	public void init(Service cleanupService, FileService fileService, File sourceFolder, File destFolder,
+	public void init(Service cleanupService, FileService fileService, File sourceFolder, String sourceFolderFilter, File destFolder,
 			List<String> xPathRules) {
 		this.init(cleanupService, fileService);
 		this.destFolder = destFolder;
 		this.sourceFolder = sourceFolder;
+		this.sourceFolderFilter = sourceFolderFilter;
 		this.xPathRules = xPathRules;
 	}
 
@@ -76,7 +81,7 @@ public class MyMojo extends AbstractMojo {
 
 		try {
 
-			List<String> filesToProcess = fileService.listFilePaths(sourceFolder);
+			List<String> filesToProcess = fileService.listFilePaths(sourceFolder, new ExtensionFileFilter(sourceFolderFilter));
 			for (String srcFilePath : filesToProcess) {
 
 				String destFilePath = fileService.buildDestFilePath(srcFilePath, destFolder);

@@ -45,6 +45,8 @@ public class FileServiceParamValidatorTest {
 	private File validSrcFolder;
 
 	private File validSrcFile;
+	
+	private java.io.FilenameFilter emptyFilenameFiler;
 
 	public FileServiceParamValidatorTest() {
 		super();
@@ -56,6 +58,7 @@ public class FileServiceParamValidatorTest {
 		sut = new FileServiceParamValidator(fileService);
 		validSrcFolder = new File(MyMojoTest.class.getResource("/samples").getPath());
 		validSrcFile = new File(MyMojoTest.class.getResource("/samples/file1.xml").getPath());
+		emptyFilenameFiler = new ExtensionFileFilter("");
 	}
 
 	@After
@@ -63,14 +66,15 @@ public class FileServiceParamValidatorTest {
 		sut = null;
 		validSrcFolder = null;
 		validSrcFile = null;
+		emptyFilenameFiler = null;
 	}
 
 	@Test
 	public void testListFilePathsSuccess() throws FileServiceException {
-		when(fileService.listFilePaths(validSrcFolder)).thenReturn(Arrays.asList("mySourceFilePathValue"));
+		when(fileService.listFilePaths(validSrcFolder,emptyFilenameFiler)).thenReturn(Arrays.asList("mySourceFilePathValue"));
 
-		List<String> rs = sut.listFilePaths(validSrcFolder);
-		verify(fileService).listFilePaths(validSrcFolder);
+		List<String> rs = sut.listFilePaths(validSrcFolder,emptyFilenameFiler);
+		verify(fileService).listFilePaths(validSrcFolder,emptyFilenameFiler);
 		assertNotNull(rs);
 		assertTrue(rs.size() == 1);
 		assertTrue(rs.get(0).equalsIgnoreCase("mySourceFilePathValue"));
@@ -87,7 +91,7 @@ public class FileServiceParamValidatorTest {
 	@Parameters(method = "buildInvalidFileParams")
 	public void testListFilePathsFail(File folderParam, String expectedErrMsg) {
 		try {
-			sut.listFilePaths(folderParam);
+			sut.listFilePaths(folderParam,emptyFilenameFiler);
 			fail();
 		} catch (FileServiceException e) {
 			assertThat(e.getMessage(), CoreMatchers.containsString(expectedErrMsg));
