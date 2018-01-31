@@ -6,10 +6,12 @@ import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.rule.Rule;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
 @AllArgsConstructor
-public class DocProcessorParam {
+@ToString
+public class Param {
 
 	private String srcFilePath;
 	private String destFilePath;

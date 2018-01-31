@@ -19,7 +19,7 @@ import com.mogikanensoftware.maven.plugins.test.mockito.rule.MockitoInitRule;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.Action;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.DocProcessor;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.DocProcessorException;
-import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.DocProcessorParam;
+import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.Param;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.rule.Rule;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.rule.impl.XPathRule;
 
@@ -65,7 +65,7 @@ public class DocProcessorParamValidatorTest {
 		String destFilePath = validFilePath;
 		Action action = Action.REMOVE_NODE;
 
-		DocProcessorParam param = new DocProcessorParam(srcFilePath, destFilePath, validRules, action); 
+		Param param = new Param(srcFilePath, destFilePath, validRules, action); 
 		
 		sut.process(param);
 
@@ -83,7 +83,7 @@ public class DocProcessorParamValidatorTest {
 	public void testProcessInvalidSrcFilePath(String srcFilePath, String destFilePath, List<Rule> rules, Action action,
 			String erroMsgExpected) {
 		try {
-			sut.process(new DocProcessorParam(srcFilePath, destFilePath, rules, action));
+			sut.process(new Param(srcFilePath, destFilePath, rules, action));
 			Assert.fail("unreachable");
 		} catch (DocProcessorException e) {
 			assertThat(e.getMessage(), containsString(erroMsgExpected));

@@ -8,7 +8,8 @@ import com.mogikanensoftware.maven.plugins.xml.cleanup.file.FileServiceException
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.Action;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.DocProcessor;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.DocProcessorException;
-import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.DocProcessorParam;
+import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.Param;
+import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.Result;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.impl.DocProcessorParamValidator;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.impl.JAXPDocHelper;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.impl.JAXPDocProcessorImpl;
@@ -41,9 +42,11 @@ public final class XmlServiceImpl implements Service {
 			logger.debug(
 					String.format("FIle->'%s' was removed since existed ->%b", request.getDestFilePath(), removed));
 
-			docProcessor.process(new DocProcessorParam(request.getSrcFilePath(), request.getDestFilePath(), request.getRules(),
+			Result procRs = docProcessor.process(new Param(request.getSrcFilePath(), request.getDestFilePath(), request.getRules(),
 					Action.REMOVE_NODE));
-			return new Response();
+			logger.debug(String.format("procRs->%s", procRs.toString()));
+			
+			return new Response(procRs);
 		} catch (DocProcessorException | FileServiceException e) {
 			throw new CleanupException(e.getMessage(), e);
 		}

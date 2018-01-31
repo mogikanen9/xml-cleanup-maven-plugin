@@ -21,7 +21,7 @@ import org.xml.sax.SAXException;
 import com.mogikanensoftware.maven.plugins.test.mockito.rule.MockitoInitRule;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.Action;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.DocProcessorException;
-import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.DocProcessorParam;
+import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.Param;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.rule.Rule;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.rule.impl.XPathRule;
 
@@ -55,15 +55,14 @@ public class JAXPDocProcessorImplTest {
 	}
 
 	public Object[] buildINvalidParams() {
-		return new Object[] { new DocProcessorParam(null, null, null, null),
-				new DocProcessorParam("abc", null, null, Action.REMOVE_NODE),
-				new DocProcessorParam("abc", "koko", null, Action.REMOVE_NODE),
-				new DocProcessorParam("abc", "koko", Arrays.asList(new XPathRule("")), null) };
+		return new Object[] { new Param(null, null, null, null), new Param("abc", null, null, Action.REMOVE_NODE),
+				new Param("abc", "koko", null, Action.REMOVE_NODE)
+		};
 	}
 
 	@Test(expected = DocProcessorException.class)
 	@Parameters(method = "buildINvalidParams")
-	public void testProcessFail(DocProcessorParam param) throws DocProcessorException {
+	public void testProcessFail(Param param) throws DocProcessorException {
 		sut.process(param);
 		fail("unreachable");
 	}
@@ -71,7 +70,7 @@ public class JAXPDocProcessorImplTest {
 	@Test
 	public void testProcessFailXPathRule() {
 		try {
-			sut.process(new DocProcessorParam("abc", "koko", Arrays.asList(mock(Rule.class)), Action.REMOVE_NODE));
+			sut.process(new Param("abc", "koko", Arrays.asList(mock(Rule.class)), Action.REMOVE_NODE));
 			fail("unreachable");
 		} catch (DocProcessorException e) {
 			Assert.assertThat(e.getMessage(), CoreMatchers.containsString("Only XPathRule types are supported"));
@@ -82,7 +81,7 @@ public class JAXPDocProcessorImplTest {
 	@Test
 	public void testProcess() throws DocProcessorException, XPathExpressionException, ParserConfigurationException,
 			SAXException, IOException {
-		sut.process(new DocProcessorParam("abc", "koko", Arrays.asList(new XPathRule("")), Action.REMOVE_NODE));
+		sut.process(new Param("abc", "koko", Arrays.asList(new XPathRule("")), Action.REMOVE_NODE));
 	}
 
 }

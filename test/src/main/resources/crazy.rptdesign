@@ -285,6 +285,7 @@
             <property name="odaDriverClass">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
             <property name="odaURL">jdbc:sqlserver://somshit;databaseName=unknown23</property>
             <property name="odaUser">superuser</property>
+	    <property name="odaUser">superuser23</property>
             <encrypted-property name="odaPassword" encryptionID="base64">V2VsY29tZTI=</encrypted-property>
             <property name="odaJndiName">java:comp/env/jdbc/koko</property>
         </oda-data-source>
