@@ -22,10 +22,11 @@
 				</executions>
 				<configuration>
 					<sourceFolder>src/main/resources</sourceFolder>
+					<sourceFolderFilter>.rptdesign</sourceFolderFilter>
 					<destFolder>${project.build.outputDirectory}</destFolder>
 					<xPathRules>
 						<param>/report/data-sources/oda-data-source/property[@name='odaUser']</param>						
-						<param>/report/data-sources/oda-data-source/property[@name='odaPassword']</param>
+						<param>/report/data-sources/oda-data-source/encrypted-property[@name='odaPassword']</param>
 					</xPathRules>
 				</configuration>
 			</plugin>

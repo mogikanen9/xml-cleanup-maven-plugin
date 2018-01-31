@@ -30,7 +30,7 @@ public class MyMojo extends AbstractMojo {
 
 	@Parameter(property = "sourceFolder")
 	private File sourceFolder;
-	
+
 	@Parameter(property = "sourceFolderFilter")
 	private String sourceFolderFilter;
 
@@ -60,8 +60,8 @@ public class MyMojo extends AbstractMojo {
 		this.cleanupService = cleanupService;
 	}
 
-	public void init(Service cleanupService, FileService fileService, File sourceFolder, String sourceFolderFilter, File destFolder,
-			List<String> xPathRules) {
+	public void init(Service cleanupService, FileService fileService, File sourceFolder, String sourceFolderFilter,
+			File destFolder, List<String> xPathRules) {
 		this.init(cleanupService, fileService);
 		this.destFolder = destFolder;
 		this.sourceFolder = sourceFolder;
@@ -81,8 +81,13 @@ public class MyMojo extends AbstractMojo {
 
 		try {
 
-			List<String> filesToProcess = fileService.listFilePaths(sourceFolder, new ExtensionFileFilter(sourceFolderFilter));
+			List<String> filesToProcess = fileService.listFilePaths(sourceFolder,
+					new ExtensionFileFilter(sourceFolderFilter));
+			getLog().info(String.format("Found %d files to process/transform.", filesToProcess.size()));
+
 			for (String srcFilePath : filesToProcess) {
+
+				getLog().info(String.format("Processing file '%s'", srcFilePath));
 
 				String destFilePath = fileService.buildDestFilePath(srcFilePath, destFolder);
 
@@ -90,7 +95,8 @@ public class MyMojo extends AbstractMojo {
 				if (response == null) {
 					throw new CleanupException("Response is null");
 				} else {
-					getLog().debug(String.format("Cleanup response -> %s", response.toString()));
+					getLog().info(String.format("Successfully processed/cleaned up file '%s' with response->%s",
+							destFilePath, response.toString()));
 				}
 
 			}
