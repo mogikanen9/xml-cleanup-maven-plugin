@@ -5,6 +5,6 @@ package com.mogikanensoftware.maven.plugins.xml.cleanup.processor;
  */
 public interface DocProcessor {
 
-	public void process(DocProcessorParam param)
+	public Result process(Param param)
 			throws DocProcessorException;
 }

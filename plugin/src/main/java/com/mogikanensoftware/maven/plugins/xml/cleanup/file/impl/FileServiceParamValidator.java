@@ -1,6 +1,7 @@
 package com.mogikanensoftware.maven.plugins.xml.cleanup.file.impl;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.List;
 
 import org.codehaus.plexus.util.StringUtils;
@@ -16,7 +17,7 @@ public final class FileServiceParamValidator implements FileService {
 	private FileService target;
 
 	@Override
-	public List<String> listFilePaths(File folder) throws FileServiceException {
+	public List<String> listFilePaths(File folder, FilenameFilter fileFilter) throws FileServiceException {
 		if (folder == null) {
 			throw new FileServiceException("Folder cannot be null.");
 		} else if (!folder.exists()) {
@@ -24,8 +25,10 @@ public final class FileServiceParamValidator implements FileService {
 		} else if (!folder.isDirectory()) {
 			throw new FileServiceException(
 					String.format("Folder '%s' is not actually a folder", folder.getAbsolutePath()));
-		} else {
-			return target.listFilePaths(folder);
+		} else if (fileFilter==null){
+			throw new FileServiceException("FileFilter cannot be null.");
+		}else {
+			return target.listFilePaths(folder, fileFilter);
 		}
 	}
 

@@ -1,6 +1,7 @@
 package com.mogikanensoftware.maven.plugins.xml.cleanup.file.impl;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,8 +15,8 @@ import com.mogikanensoftware.maven.plugins.xml.cleanup.file.FileServiceException
 public final class FileServiceImpl implements FileService {
 
 	@Override
-	public List<String> listFilePaths(File folder) throws FileServiceException {
-		return Arrays.stream(folder.listFiles()).map(file -> file.getAbsolutePath()).collect(Collectors.toList());
+	public List<String> listFilePaths(File folder, FilenameFilter fileFilter) throws FileServiceException {
+		return Arrays.stream(folder.listFiles(fileFilter)).map(file -> file.getAbsolutePath()).collect(Collectors.toList());
 
 	}
 

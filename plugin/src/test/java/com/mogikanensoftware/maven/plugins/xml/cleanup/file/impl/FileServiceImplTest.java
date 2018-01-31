@@ -38,7 +38,7 @@ public class FileServiceImplTest {
 	@Test
 	public void testListFilePaths() throws FileServiceException {
 		File srcFolder = new File(MyMojoTest.class.getResource("/samples/").getPath());
-		List<String> rs = sut.listFilePaths(srcFolder);
+		List<String> rs = sut.listFilePaths(srcFolder, new ExtensionFileFilter(""));
 		assertNotNull(rs);
 		assertTrue(rs.size() >= 1);
 	}
