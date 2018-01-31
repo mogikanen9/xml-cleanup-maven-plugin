@@ -1,6 +1,8 @@
 # xml-cleanup-maven-plugin
 Maven plugin which can remove specified tags from xml file(s)
 
+[![Build Status](https://travis-ci.org/mogikanen9/xml-cleanup-maven-plugin.svg?branch=master)](https://travis-ci.org/mogikanen9/xml-cleanup-maven-plugin)
+
 ## Project description
  * plugin - core source code of the plugin
  * test - test/demo projects which shows how to use the plugin
