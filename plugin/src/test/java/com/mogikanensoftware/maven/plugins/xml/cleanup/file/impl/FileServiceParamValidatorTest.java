@@ -11,6 +11,7 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -46,6 +47,8 @@ public class FileServiceParamValidatorTest {
 
 	private File validSrcFile;
 
+	private java.io.FilenameFilter emptyFilenameFiler;
+
 	public FileServiceParamValidatorTest() {
 		super();
 		mockitoRule = new MockitoInitRule(this);
@@ -56,6 +59,7 @@ public class FileServiceParamValidatorTest {
 		sut = new FileServiceParamValidator(fileService);
 		validSrcFolder = new File(MyMojoTest.class.getResource("/samples").getPath());
 		validSrcFile = new File(MyMojoTest.class.getResource("/samples/file1.xml").getPath());
+		emptyFilenameFiler = new ExtensionFileFilter("");
 	}
 
 	@After
@@ -63,31 +67,35 @@ public class FileServiceParamValidatorTest {
 		sut = null;
 		validSrcFolder = null;
 		validSrcFile = null;
+		emptyFilenameFiler = null;
 	}
 
 	@Test
 	public void testListFilePathsSuccess() throws FileServiceException {
-		when(fileService.listFilePaths(validSrcFolder)).thenReturn(Arrays.asList("mySourceFilePathValue"));
+		when(fileService.listFilePaths(validSrcFolder, emptyFilenameFiler))
+				.thenReturn(Arrays.asList("mySourceFilePathValue"));
 
-		List<String> rs = sut.listFilePaths(validSrcFolder);
-		verify(fileService).listFilePaths(validSrcFolder);
+		List<String> rs = sut.listFilePaths(validSrcFolder, emptyFilenameFiler);
+		verify(fileService).listFilePaths(validSrcFolder, emptyFilenameFiler);
 		assertNotNull(rs);
 		assertTrue(rs.size() == 1);
 		assertTrue(rs.get(0).equalsIgnoreCase("mySourceFilePathValue"));
 	}
 
 	public Object[] buildInvalidFileParams() {
-		return new Object[] { 
-				new Object[] { null, "Folder" }, 
-				new Object[] { Mockito.mock(File.class), "does not exists" },
-				new Object[] { new File(MyMojoTest.class.getResource("/samples/file1.xml").getPath()), "not actually a folder" } };
+		return new Object[] { new Object[] { null, emptyFilenameFiler, "Folder" },
+				new Object[] { Mockito.mock(File.class), emptyFilenameFiler, "does not exists" },
+				new Object[] { new File(MyMojoTest.class.getResource("/samples/file1.xml").getPath()),
+						emptyFilenameFiler, "not actually a folder" },
+				new Object[] { new File(MyMojoTest.class.getResource("/samples").getPath()),
+						null, "FileFilter cannot be null" }};
 	}
 
 	@Test
 	@Parameters(method = "buildInvalidFileParams")
-	public void testListFilePathsFail(File folderParam, String expectedErrMsg) {
+	public void testListFilePathsFail(File folderParam, FilenameFilter filter, String expectedErrMsg) {
 		try {
-			sut.listFilePaths(folderParam);
+			sut.listFilePaths(folderParam, filter);
 			fail();
 		} catch (FileServiceException e) {
 			assertThat(e.getMessage(), CoreMatchers.containsString(expectedErrMsg));

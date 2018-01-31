@@ -6,7 +6,8 @@ import org.codehaus.plexus.util.StringUtils;
 
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.DocProcessor;
 import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.DocProcessorException;
-import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.DocProcessorParam;
+import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.Param;
+import com.mogikanensoftware.maven.plugins.xml.cleanup.processor.Result;
 
 import lombok.AllArgsConstructor;
 
@@ -20,7 +21,7 @@ public final class DocProcessorParamValidator implements DocProcessor {
 	private DocProcessor target;
 
 	@Override
-	public void process(DocProcessorParam param) throws DocProcessorException {
+	public Result process(Param param) throws DocProcessorException {
 
 		if (param == null) {
 			throw new DocProcessorException("Param value cannot be null");
@@ -36,7 +37,7 @@ public final class DocProcessorParamValidator implements DocProcessor {
 					String.format("Destination file path cannot be null/empty->%s", param.getDestFilePath()));
 		}
 
-		this.target.process(param);
+		return this.target.process(param);
 
 	}
 
