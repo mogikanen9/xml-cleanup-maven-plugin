@@ -3,14 +3,38 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.mogikanen9.maven.plugins</groupId>
 	<artifactId>xml-cleanup-maven-plugin</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>maven-plugin</packaging>
-	<name>xml-cleanup-maven-plugin Maven Mojo</name>
-	<url>http://maven.apache.org</url>
+
+	<name>xml-cleanup-maven-plugin</name>
+	<description>Maven plugin which can remove specified tags from xml file(s)</description>
+	<url>https://github.com/mogikanen9/xml-cleanup-maven-plugin/</url>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://github.com/mogikanen9/xml-cleanup-maven-plugin</url>
+	</scm>
+
+	<developers>
+		<developer>
+			<email>mogikanensoftware@gmail.com</email>
+			<name>Vlad Voinov</name>
+			<url>https://github.com/mogikanen9</url>
+			<id>mogikanen9</id>
+		</developer>
+	</developers>
 
 	<properties>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<dependencies>
