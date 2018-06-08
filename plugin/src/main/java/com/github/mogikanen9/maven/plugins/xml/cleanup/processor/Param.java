@@ -7,7 +7,11 @@ import com.github.mogikanen9.maven.plugins.xml.cleanup.processor.rule.Rule;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
-
+/**
+ * 
+ * @author mogikanen9
+ *
+ */
 @Getter
 @AllArgsConstructor
 @ToString

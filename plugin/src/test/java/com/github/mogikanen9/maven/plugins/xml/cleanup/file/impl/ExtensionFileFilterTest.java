@@ -15,6 +15,11 @@ import com.github.mogikanen9.maven.plugins.xml.cleanup.file.impl.ExtensionFileFi
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 
+/**
+ * 
+ * @author mogikanen9
+ *
+ */
 @RunWith(JUnitParamsRunner.class)
 public class ExtensionFileFilterTest {
 

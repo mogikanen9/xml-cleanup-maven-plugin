@@ -4,6 +4,11 @@ import static org.mockito.MockitoAnnotations.initMocks;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 
+/**
+ * 
+ * @author mogikanen9
+ *
+ */
 public class MockitoInitRule extends TestWatcher {
 
 	private Object reference;

@@ -12,6 +12,11 @@ import com.github.mogikanen9.maven.plugins.xml.cleanup.service.CleanupException;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.service.Request;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.service.impl.XmlServiceImpl;
 
+/**
+ * 
+ * @author mogikanen9
+ *
+ */
 @RunWith(MockitoJUnitRunner.class)
 public class XmlServiceImplTest {
 
