@@ -24,7 +24,11 @@ import com.github.mogikanen9.maven.plugins.xml.cleanup.service.Response;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.service.Service;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.service.impl.ServiceParamValidator;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.service.impl.XmlServiceImpl;
-
+/**
+ * 
+ * @author mogikanen9
+ *
+ */
 @Mojo(name = "cleanup")
 public class MyMojo extends AbstractMojo {
 

@@ -19,6 +19,11 @@ import org.xml.sax.SAXException;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.MyMojoTest;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.processor.impl.JAXPDocHelper;
 
+/**
+ * 
+ * @author mogikanen9
+ *
+ */
 public class JAXPDocHelperTest {
 
 	private JAXPDocHelper helper;

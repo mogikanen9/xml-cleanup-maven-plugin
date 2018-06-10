@@ -27,6 +27,11 @@ import com.github.mogikanen9.maven.plugins.xml.cleanup.processor.rule.impl.XPath
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 
+/**
+ * 
+ * @author mogikanen9
+ *
+ */
 @RunWith(JUnitParamsRunner.class)
 public class DocProcessorParamValidatorTest {
 

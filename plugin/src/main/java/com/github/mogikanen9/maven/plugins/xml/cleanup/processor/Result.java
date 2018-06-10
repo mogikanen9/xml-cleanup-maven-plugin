@@ -8,6 +8,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * 
+ * @author mogikanen9
+ *
+ */
 @Getter
 @ToString
 @AllArgsConstructor

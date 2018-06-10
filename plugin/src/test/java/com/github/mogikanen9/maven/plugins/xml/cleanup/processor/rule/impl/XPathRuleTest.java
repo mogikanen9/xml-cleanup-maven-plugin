@@ -6,6 +6,11 @@ import org.junit.Test;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.processor.rule.Rule;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.processor.rule.impl.XPathRule;
 
+/**
+ * 
+ * @author mogikanen9
+ *
+ */
 public class XPathRuleTest {
 
 	@Test

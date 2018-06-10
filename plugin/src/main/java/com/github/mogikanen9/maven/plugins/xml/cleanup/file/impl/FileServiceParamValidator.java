@@ -11,6 +11,12 @@ import com.github.mogikanen9.maven.plugins.xml.cleanup.file.FileServiceException
 
 import lombok.AllArgsConstructor;
 
+/**
+ * 
+ * @author mogikanen9
+ *
+ */
+
 @AllArgsConstructor
 public final class FileServiceParamValidator implements FileService {
 

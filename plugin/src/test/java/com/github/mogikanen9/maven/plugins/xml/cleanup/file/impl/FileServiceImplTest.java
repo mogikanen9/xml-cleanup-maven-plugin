@@ -23,6 +23,11 @@ import com.github.mogikanen9.maven.plugins.xml.cleanup.file.FileServiceException
 import com.github.mogikanen9.maven.plugins.xml.cleanup.file.impl.ExtensionFileFilter;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.file.impl.FileServiceImpl;
 
+/**
+ * 
+ * @author mogikanen9
+ *
+ */
 public class FileServiceImplTest {
 
 	FileService sut;

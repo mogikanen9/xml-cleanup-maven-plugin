@@ -9,6 +9,12 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+/**
+ * 
+ * @author mogikanen9
+ *
+ */
+
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode(of = { "fileExtension" })
