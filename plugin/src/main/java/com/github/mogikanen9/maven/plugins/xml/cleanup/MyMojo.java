@@ -94,6 +94,7 @@ public class MyMojo extends AbstractMojo {
 				getLog().info(String.format("Processing file '%s'", srcFilePath));
 
 				String destFilePath = fileService.buildDestFilePath(srcFilePath, destFolder);
+				getLog().info(String.format("DestFilePath will be '%s'", destFilePath));
 
 				Response response = cleanupService.cleanup(new Request(srcFilePath, destFilePath, rules));
 				if (response == null) {

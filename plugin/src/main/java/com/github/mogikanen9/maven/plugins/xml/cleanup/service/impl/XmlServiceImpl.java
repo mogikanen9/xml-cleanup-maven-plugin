@@ -38,11 +38,22 @@ public final class XmlServiceImpl implements Service {
 		DocProcessor docProcessor = new DocProcessorParamValidator(new JAXPDocProcessorImpl(new JAXPDocHelper()));
 		try {
 
-			boolean removed = fileService.removeFileIfAlreadyExists(request.getDestFilePath());
-			logger.debug(
-					String.format("FIle->'%s' was removed since existed ->%b", request.getDestFilePath(), removed));
+			String destFilePath = request.getDestFilePath();
+			String srcFilePath = request.getSrcFilePath();
+			
+			if(fileService.fileExists(destFilePath)) {
+				String copyFilePath = fileService.generateFileCopy(destFilePath);
+				logger.debug(
+						String.format("copyFilePath->'%s", copyFilePath));
+				srcFilePath = copyFilePath;
+				
+			}
+			
+			//boolean removed = fileService.removeFileIfAlreadyExists(destFilePath);
+			//logger.debug(
+				//	String.format("FIle->'%s' was removed since existed ->%b", destFilePath, removed));
 
-			Result procRs = docProcessor.process(new Param(request.getSrcFilePath(), request.getDestFilePath(), request.getRules(),
+			Result procRs = docProcessor.process(new Param(srcFilePath, destFilePath, request.getRules(),
 					Action.REMOVE_NODE));
 			logger.debug(String.format("procRs->%s", procRs.toString()));
 			

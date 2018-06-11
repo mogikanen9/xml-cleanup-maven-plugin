@@ -31,9 +31,9 @@ public final class FileServiceParamValidator implements FileService {
 		} else if (!folder.isDirectory()) {
 			throw new FileServiceException(
 					String.format("Folder '%s' is not actually a folder", folder.getAbsolutePath()));
-		} else if (fileFilter==null){
+		} else if (fileFilter == null) {
 			throw new FileServiceException("FileFilter cannot be null.");
-		}else {
+		} else {
 			return target.listFilePaths(folder, fileFilter);
 		}
 	}
@@ -43,10 +43,11 @@ public final class FileServiceParamValidator implements FileService {
 		if (StringUtils.isEmpty(sourceFilePath)) {
 			throw new FileServiceException("Param 'sourceFilePath' cannot be null or empty.");
 		} else if (destFolder == null) {
-			throw new FileServiceException(String.format("Folder from 'destFolder' param '%s' does not exists", destFolder));
-		} else if (!destFolder.isDirectory()) {
 			throw new FileServiceException(
-					String.format("Folder from 'destFolder' param '%s' is nota a actually a folder", destFolder.getAbsolutePath()));
+					String.format("Folder from 'destFolder' param '%s' does not exists", destFolder));
+		} else if (!destFolder.isDirectory()) {
+			throw new FileServiceException(String.format(
+					"Folder from 'destFolder' param '%s' is nota a actually a folder", destFolder.getAbsolutePath()));
 		}
 		return target.buildDestFilePath(sourceFilePath, destFolder);
 	}
@@ -54,9 +55,30 @@ public final class FileServiceParamValidator implements FileService {
 	@Override
 	public boolean removeFileIfAlreadyExists(String filePath) throws FileServiceException {
 		if (StringUtils.isEmpty(filePath)) {
-			throw new FileServiceException("Param 'filePath' cannot be null or empty.");
+			throw new FileServiceException("removeFileIfAlreadyExists(): Param 'filePath' cannot be null or empty.");
 		} else {
 			return target.removeFileIfAlreadyExists(filePath);
+		}
+	}
+
+	@Override
+	public String generateFileCopy(String filePath) throws FileServiceException {
+		if (StringUtils.isEmpty(filePath)) {
+			throw new FileServiceException("generateFileCopy(): Param 'filePath' cannot be null or empty.");
+		} else if (!(new File(filePath).exists())) {
+			throw new FileServiceException(String
+					.format("generateFileCopy(): File %s does not exists - cannnot generate a copy of it", filePath));
+		} else {
+			return target.generateFileCopy(filePath);
+		}
+	}
+
+	@Override
+	public boolean fileExists(String filePath) throws FileServiceException {
+		if (StringUtils.isEmpty(filePath)) {
+			throw new FileServiceException("fileExists(): Param 'filePath' cannot be null or empty.");
+		} else {
+			return target.fileExists(filePath);
 		}
 	}
 

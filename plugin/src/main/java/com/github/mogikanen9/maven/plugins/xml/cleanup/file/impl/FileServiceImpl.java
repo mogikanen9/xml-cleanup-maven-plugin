@@ -2,6 +2,11 @@ package com.github.mogikanen9.maven.plugins.xml.cleanup.file.impl;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +21,8 @@ public final class FileServiceImpl implements FileService {
 
 	@Override
 	public List<String> listFilePaths(File folder, FilenameFilter fileFilter) throws FileServiceException {
-		return Arrays.stream(folder.listFiles(fileFilter)).map(file -> file.getAbsolutePath()).collect(Collectors.toList());
+		return Arrays.stream(folder.listFiles(fileFilter)).map(file -> file.getAbsolutePath())
+				.collect(Collectors.toList());
 
 	}
 
@@ -44,6 +50,24 @@ public final class FileServiceImpl implements FileService {
 		} catch (Exception e) {
 			throw new FileServiceException(e);
 		}
+	}
+
+	@Override
+	public String generateFileCopy(String filePath) throws FileServiceException {
+		Path source = Paths.get(filePath);
+		Path target = Paths.get(filePath);
+		try {
+			Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING);
+		} catch (IOException e) {
+			throw new FileServiceException(e);
+		}
+
+		return target.toFile().getPath();
+	}
+
+	@Override
+	public boolean fileExists(String filePath) throws FileServiceException {
+		return new File(filePath).exists();
 	}
 
 }
