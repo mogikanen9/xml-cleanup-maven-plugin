@@ -20,10 +20,10 @@
 					</execution>
 				</executions>
 				<configuration>
-					<sourceFolder>src/main/resources/test1</sourceFolder>
+					<!--sourceFolder>src/main/resources/test1</sourceFolder-->
+					<sourceFolder>src/main/resources</sourceFolder>
 					<sourceFolderFilter>.rptdesign</sourceFolderFilter>
-					<!-- destFolder>${project.build.outputDirectory}</destFolder-->
-					<destFolder>src/main/resources/test1</destFolder>
+					<destFolder>${project.build.outputDirectory}</destFolder>					
 					<xPathRules>
 						<param>/report/data-sources/oda-data-source/property[@name='odaUser']</param>						
 						<param>/report/data-sources/oda-data-source/encrypted-property[@name='odaPassword']</param>
