@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" id="1" version="3.2.23">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.5.0.v201506092134 Build &lt;@BUILD@&gt;</property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">fixed layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter id="4169" name="StartDate">
+            <text-property name="promptText">Start Date (DD/MM/YYYY)</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter id="4294" name="StartTime">
+            <text-property name="promptText">StartTime - Hours (HH)</text-property>
+            <property name="valueType">static</property>
+            <property name="sortBy">value</property>
+            <property name="sortDirection">asc</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">00</value>
+            </simple-property-list>
+            <list-property name="selectionList">
+                <structure>
+                    <property name="value">00</property>
+                    <property name="label">00</property>
+                </structure>
+                <structure>
+                    <property name="value">01</property>
+                    <property name="label">01</property>
+                </structure>
+                <structure>
+                    <property name="value">02</property>
+                    <property name="label">02</property>
+                </structure>
+                <structure>
+                    <property name="value">03</property>
+                    <property name="label">03</property>
+                </structure>
+                <structure>
+                    <property name="value">04</property>
+                    <property name="label">04</property>
+                </structure>
+                <structure>
+                    <property name="value">05</property>
+                    <property name="label">05</property>
+                </structure>
+                <structure>
+                    <property name="value">06</property>
+                    <property name="label">06</property>
+                </structure>
+                <structure>
+                    <property name="value">07</property>
+                    <property name="label">07</property>
+                </structure>
+                <structure>
+                    <property name="value">08</property>
+                    <property name="label">08</property>
+                </structure>
+                <structure>
+                    <property name="value">09</property>
+                    <property name="label">09</property>
+                </structure>
+                <structure>
+                    <property name="value">10</property>
+                    <property name="label">10</property>
+                </structure>
+                <structure>
+                    <property name="value">11</property>
+                    <property name="label">11</property>
+                </structure>
+                <structure>
+                    <property name="value">12</property>
+                    <property name="label">12</property>
+                </structure>
+                <structure>
+                    <property name="value">13</property>
+                    <property name="label">13</property>
+                </structure>
+                <structure>
+                    <property name="value">14</property>
+                    <property name="label">14</property>
+                </structure>
+                <structure>
+                    <property name="value">15</property>
+                    <property name="label">15</property>
+                </structure>
+                <structure>
+                    <property name="value">16</property>
+                    <property name="label">16</property>
+                </structure>
+                <structure>
+                    <property name="value">17</property>
+                    <property name="label">17</property>
+                </structure>
+                <structure>
+                    <property name="value">18</property>
+                    <property name="label">18</property>
+                </structure>
+                <structure>
+                    <property name="value">19</property>
+                    <property name="label">19</property>
+                </structure>
+                <structure>
+                    <property name="value">20</property>
+                    <property name="label">20</property>
+                </structure>
+                <structure>
+                    <property name="value">21</property>
+                    <property name="label">21</property>
+                </structure>
+                <structure>
+                    <property name="value">22</property>
+                    <property name="label">22</property>
+                </structure>
+                <structure>
+                    <property name="value">23</property>
+                    <property name="label">23</property>
+                </structure>
+            </list-property>
+            <property name="paramType">simple</property>
+            <property name="controlType">list-box</property>
+            <property name="mustMatch">true</property>
+            <property name="fixedOrder">false</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter id="4170" name="EndDate">
+            <text-property name="promptText">End Date (DD/MM/YYYY)</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter id="4295" name="EndTime">
+            <text-property name="promptText">EndTime - Hours (HH)</text-property>
+            <property name="valueType">static</property>
+            <property name="sortBy">value</property>
+            <property name="sortDirection">asc</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">23</value>
+            </simple-property-list>
+            <list-property name="selectionList">
+                <structure>
+                    <property name="value">00</property>
+                    <property name="label">00</property>
+                </structure>
+                <structure>
+                    <property name="value">01</property>
+                    <property name="label">01</property>
+                </structure>
+                <structure>
+                    <property name="value">02</property>
+                    <property name="label">02</property>
+                </structure>
+                <structure>
+                    <property name="value">03</property>
+                    <property name="label">03</property>
+                </structure>
+                <structure>
+                    <property name="value">04</property>
+                    <property name="label">04</property>
+                </structure>
+                <structure>
+                    <property name="value">05</property>
+                    <property name="label">05</property>
+                </structure>
+                <structure>
+                    <property name="value">06</property>
+                    <property name="label">06</property>
+                </structure>
+                <structure>
+                    <property name="value">07</property>
+                    <property name="label">07</property>
+                </structure>
+                <structure>
+                    <property name="value">08</property>
+                    <property name="label">08</property>
+                </structure>
+                <structure>
+                    <property name="value">09</property>
+                    <property name="label">09</property>
+                </structure>
+                <structure>
+                    <property name="value">10</property>
+                    <property name="label">10</property>
+                </structure>
+                <structure>
+                    <property name="value">11</property>
+                    <property name="label">11</property>
+                </structure>
+                <structure>
+                    <property name="value">12</property>
+                    <property name="label">12</property>
+                </structure>
+                <structure>
+                    <property name="value">13</property>
+                    <property name="label">13</property>
+                </structure>
+                <structure>
+                    <property name="value">14</property>
+                    <property name="label">14</property>
+                </structure>
+                <structure>
+                    <property name="value">15</property>
+                    <property name="label">15</property>
+                </structure>
+                <structure>
+                    <property name="value">16</property>
+                    <property name="label">16</property>
+                </structure>
+                <structure>
+                    <property name="value">17</property>
+                    <property name="label">17</property>
+                </structure>
+                <structure>
+                    <property name="value">18</property>
+                    <property name="label">18</property>
+                </structure>
+                <structure>
+                    <property name="value">19</property>
+                    <property name="label">19</property>
+                </structure>
+                <structure>
+                    <property name="value">20</property>
+                    <property name="label">20</property>
+                </structure>
+                <structure>
+                    <property name="value">21</property>
+                    <property name="label">21</property>
+                </structure>
+                <structure>
+                    <property name="value">22</property>
+                    <property name="label">22</property>
+                </structure>
+                <structure>
+                    <property name="value">23</property>
+                    <property name="label">23</property>
+                </structure>
+            </list-property>
+            <property name="paramType">simple</property>
+            <property name="controlType">list-box</property>
+            <property name="mustMatch">true</property>
+            <property name="fixedOrder">false</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" id="7" name="metrics">
+      <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+            </list-property>
+      <property name="odaDriverClass">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+      <property name="odaURL">jdbc:sqlserver://somshit;databaseName=unknown23</property>
+      <property name="odaJndiName">java:comp/env/jdbc/koko</property>
+    </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" id="4271" name="error_count">
+            <list-property name="columnHints"/>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData"/>
+            <method name="beforeOpen"><![CDATA[var startDate = params["StartDate"].value; // DD/MM/YYYY i.e. 01/01/2000
+var startDateDate = startDate.substr(0,2);
+var startDateMonth = startDate.substr(3,2);
+var startDateYear = startDate.substr(6,4);
+var startDateFormatted = startDateYear + "-" + startDateMonth + "-" + startDateDate;
+
+var endDate = params["EndDate"].value; // DD/MM/YYYY i.e. 12/12/2222
+var endDateDate = endDate.substr(0,2);
+var endDateMonth = endDate.substr(3,2);
+var endDateYear = endDate.substr(6,4);
+var endDateFormatted = endDateYear + "-" + endDateMonth + "-" + endDateDate;
+
+this.queryText = this.queryText.replaceAll("2000-01-01", startDateFormatted);
+this.queryText = this.queryText.replaceAll("2222-12-12", endDateFormatted);
+ 
+this.queryText = this.queryText.replaceAll(" 00", " " + params["StartTime"].value);
+this.queryText = this.queryText.replaceAll(" 23", " " + params["EndTime"].value);]]></method>
+            <property name="dataSource">metrics</property>
+            <list-property name="resultSet"/>
+            <xml-property name="queryText"><![CDATA[SELECT  * from nothing]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style id="4" name="report">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style id="5" name="crosstab-cell">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style id="6" name="crosstab">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page id="2" name="Simple MasterPage">
+            <property name="type">custom</property>
+            <property name="orientation">landscape</property>
+            <property name="height">8.5in</property>
+            <property name="width">15in</property>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[Report published at: <value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="4245">
+            <column id="4246">
+                <property name="width">2in</property>
+            </column>
+            <column id="4247"/>
+            <row id="4248">
+                <cell id="4249">
+                    <image id="4296">
+                        <property name="height">0.5in</property>
+                        <property name="width">1.71875in</property>
+                        <property name="source">file</property>
+                        <expression name="uri" type="constant">logo.gif</expression>
+                    </image>
+                </cell>
+                <cell id="4250">
+                    <property name="fontWeight">bold</property>
+                    <property name="textAlign">right</property>
+                    <text id="4251">
+                        <property name="textAlign">left</property>
+                        <property name="contentType">auto</property>
+                        <text-property name="content"/>
+                    </text>
+                </cell>
+            </row>
+        </grid>
+        <text-data id="497">
+            <property name="fontSize">18pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="paddingBottom">20px</property>
+            <property name="textAlign">left</property>
+            <expression name="valueExpr">"Report between:"+params["StartDate"].value+" "+params["StartTime"].value+" and "+params["EndDate"].value+" "+params["EndTime"].value</expression>
+            <property name="contentType">html</property>
+        </text-data>
+        <table id="4272">
+            <property name="dataSet">error_count</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">TRANSACTION_DATE</property>
+                    <text-property name="displayName">TRANSACTION_DATE</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["TRANSACTION_DATE"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">ERROR_CODE</property>
+                    <text-property name="displayName">ERROR_CODE</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["ERROR_CODE"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">CNT</property>
+                    <text-property name="displayName">CNT</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["CNT"]</expression>
+                    <property name="dataType">decimal</property>
+                </structure>
+            </list-property>
+            <column id="4291">
+                <property name="width">25%</property>
+            </column>
+            <column id="4292">
+                <property name="width">50%</property>
+            </column>
+            <column id="4293">
+                <property name="width">25%</property>
+            </column>
+            <header>
+                <row id="4273">
+                    <property name="backgroundColor">#D8D8D8</property>
+                    <property name="fontWeight">bold</property>
+                    <property name="textAlign">left</property>
+                    <cell id="4274">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="4275">
+                            <text-property name="text">TRANSACTION_DATE</text-property>
+                        </label>
+                    </cell>
+                    <cell id="4276">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="4277">
+                            <text-property name="text">ERROR_CODE</text-property>
+                        </label>
+                    </cell>
+                    <cell id="4278">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">thin</property>
+                        <label id="4279">
+                            <text-property name="text">CNT</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="4280">
+                    <cell id="4281">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <data id="4282">
+                            <property name="resultSetColumn">TRANSACTION_DATE</property>
+                        </data>
+                    </cell>
+                    <cell id="4283">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <data id="4284">
+                            <property name="resultSetColumn">ERROR_CODE</property>
+                        </data>
+                    </cell>
+                    <cell id="4285">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">thin</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">thin</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">thin</property>
+                        <data id="4286">
+                            <property name="resultSetColumn">CNT</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="4287">
+                    <cell id="4288"/>
+                    <cell id="4289"/>
+                    <cell id="4290"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>

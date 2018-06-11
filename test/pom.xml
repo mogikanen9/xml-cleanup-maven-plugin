@@ -3,14 +3,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.mogikanen9.maven.plugins</groupId>
 	<artifactId>xml-cleanup-maven-plugin-test</artifactId>
-	<version>1.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>com.github.mogikanen9.maven.plugins</groupId>
 				<artifactId>xml-cleanup-maven-plugin</artifactId>
-				<version>1.0</version>
+				<version>1.0.1-SNAPSHOT</version>
 				<executions>
 					<execution>
 						<phase>prepare-package</phase>
@@ -20,9 +20,10 @@
 					</execution>
 				</executions>
 				<configuration>
-					<sourceFolder>src/main/resources</sourceFolder>
+					<sourceFolder>src/main/resources/test1</sourceFolder>
 					<sourceFolderFilter>.rptdesign</sourceFolderFilter>
-					<destFolder>${project.build.outputDirectory}</destFolder>
+					<!-- destFolder>${project.build.outputDirectory}</destFolder-->
+					<destFolder>src/main/resources/test1</destFolder>
 					<xPathRules>
 						<param>/report/data-sources/oda-data-source/property[@name='odaUser']</param>						
 						<param>/report/data-sources/oda-data-source/encrypted-property[@name='odaPassword']</param>
