@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.mogikanen9.maven.plugins</groupId>
 	<artifactId>xml-cleanup-maven-plugin</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>xml-cleanup-maven-plugin</name>
