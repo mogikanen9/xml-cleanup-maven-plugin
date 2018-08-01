@@ -7,9 +7,7 @@ Maven plugin which can remove specified tags from xml file(s)
 
 [![GitHub release](https://img.shields.io/github/release/mogikanen9/xml-cleanup-maven-plugin.svg)](https://github.com/mogikanen9/xml-cleanup-maven-plugin/releases/tag/1.0)
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=com.github.mogikanen9.maven.plugins%3Axml-cleanup-maven-plugin-all&metric=alert_status)]
-(https://sonarcloud.io/api/project_badges/measure?project=com.github.mogikanen9.maven.plugins%3Axml-cleanup-maven-plugin-all&metric=alert_status)
-
+![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=com.github.mogikanen9.maven.plugins%3Axml-cleanup-maven-plugin-all&metric=alert_status)
 
 ## Project description
  * plugin - core source code of the plugin
