@@ -5,6 +5,9 @@
 	<artifactId>xml-cleanup-maven-plugin-test</artifactId>
 	<version>1.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
+	<properties>
+		<sonar.skip>true</sonar.skip>
+	</properties>
 	<build>
 		<plugins>
 			<plugin>
