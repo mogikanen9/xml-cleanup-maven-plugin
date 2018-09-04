@@ -2,17 +2,22 @@ package com.github.mogikanen9.maven.plugins.xml.cleanup.processor.impl;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
+import static org.mockito.Mockito.mock;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactoryConfigurationError;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.mockito.Mockito;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
@@ -26,25 +31,25 @@ import com.github.mogikanen9.maven.plugins.xml.cleanup.processor.impl.JAXPDocHel
  */
 public class JAXPDocHelperTest {
 
-	private JAXPDocHelper helper;
+	private JAXPDocHelper sut;
 
 	File validSrcFile;
 
 	@Before
 	public void setUp() throws Exception {
-		helper = new JAXPDocHelper();
+		sut = new JAXPDocHelper();
 		validSrcFile = new File(MyMojoTest.class.getResource("/samples/file1.xml").getPath());
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		helper = null;
+		sut = null;
 		validSrcFile = null;
 	}
 
 	@Test
 	public void testParse() throws ParserConfigurationException, SAXException, IOException {
-		Document doc = helper.parse(validSrcFile.getAbsolutePath());
+		Document doc = sut.parse(validSrcFile.getAbsolutePath());
 		assertNotNull(doc);
 	}
 
@@ -66,10 +71,11 @@ public class JAXPDocHelperTest {
 		fail("Not yet implemented");
 	}
 
-	@Ignore
 	@Test
-	public void testSave() {
-		fail("Not yet implemented");
+	public void testSave() throws FileNotFoundException, TransformerFactoryConfigurationError, TransformerException {
+		String destFilePath = validSrcFile.getParentFile().getAbsolutePath()+java.io.File.separator+"destFile.xml";
+		sut.save(mock(Document.class), destFilePath);
+		Assert.assertTrue(new File(destFilePath).exists());
 	}
 
 }

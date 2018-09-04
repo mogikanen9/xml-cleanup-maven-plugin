@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -81,16 +82,21 @@ public class JAXPDocHelper {
 
 	public void save(Document doc, String destFilePath)
 			throws TransformerFactoryConfigurationError, TransformerException, FileNotFoundException {
-		Transformer tf = TransformerFactory.newInstance().newTransformer();
-		tf.setOutputProperty(OutputKeys.INDENT, "yes");
-		tf.setOutputProperty(OutputKeys.METHOD, "xml");
-		tf.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+		
+		TransformerFactory transformerFactory = TransformerFactory.newInstance();
+		transformerFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+		
+		Transformer transformer = transformerFactory.newTransformer();
+		
+		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+		transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+		transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
 
 		DOMSource domSource = new DOMSource(doc);
 		OutputStream out = new FileOutputStream(new File(destFilePath));
 		try {
 			StreamResult sr = new StreamResult(out);
-			tf.transform(domSource, sr);
+			transformer.transform(domSource, sr);
 		} finally {
 			if (out != null) {
 				IOUtil.close(out);
