@@ -13,4 +13,8 @@
 		<module>test</module>
 	</modules>
 
+	<properties>
+		<sonar.projectKey>mogikanen9_xml-cleanup-maven-plugin</sonar.projectKey>
+		<sonar.projectName>xml-cleanup-maven-plugin</sonar.projectName>
+	</properties>
 </project>
