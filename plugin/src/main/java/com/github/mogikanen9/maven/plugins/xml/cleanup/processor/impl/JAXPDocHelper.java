@@ -5,8 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
@@ -85,9 +83,7 @@ public class JAXPDocHelper {
 			StreamResult sr = new StreamResult(out);
 			transformer.transform(domSource, sr);
 		} finally {
-			if (out != null) {
 				IOUtil.close(out);
-			}
 		}
 
 	}
