@@ -1,7 +1,6 @@
 package com.github.mogikanen9.maven.plugins.xml.cleanup.processor.impl;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 
 import java.io.File;
@@ -16,7 +15,6 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -61,92 +59,83 @@ public class JAXPDocHelperTest {
 		assertNotNull(doc);
 	}
 
-
 	@Test
 	public void testRemoveNodeEmptyMock() {
 		sut.removeNode(mock(Node.class));
 	}
 
 	protected Node createPropertyNode(Document doc, String attributeName, String attrValue, String textValue) {
-		
-		Element  tagNode = doc.createElement(PROPERTY);
+
+		Element tagNode = doc.createElement(PROPERTY);
 		tagNode.setAttribute(attributeName, attrValue);
-		
+
 		Node tagData = doc.createTextNode(textValue);
 		tagNode.appendChild(tagData);
-		
+
 		return tagNode;
 	}
-	
+
 	protected Node createPropertyNodeWithSubNodeTextValue(Document doc, String textValue) {
-		
-		Element  tagNode = doc.createElement(PROPERTY);
-		
-		Element  valueNode = doc.createElement("value");
+
+		Element tagNode = doc.createElement(PROPERTY);
+
+		Element valueNode = doc.createElement("value");
 		tagNode.appendChild(valueNode);
-		
+
 		Node tagData = doc.createTextNode(textValue);
 		valueNode.appendChild(tagData);
-		
+
 		return tagNode;
 	}
-	
+
 	@Test
 	public void testRemoveNodeWithParentOnly() throws ParserConfigurationException {
-		
-		final String controlXml = "<oda-data-source><property><value>JNDI12</value></property></oda-data-source>";				
-		
-		Document testDoc = DocumentBuilderFactory.newInstance().newDocumentBuilder()
-		.newDocument();
-		
-		Element odaDs = testDoc.createElement(ODA_DATA_SOURCE);		
-		
+
+		final String controlXml = "<oda-data-source><property><value>JNDI12</value></property></oda-data-source>";
+
+		Document testDoc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+
+		Element odaDs = testDoc.createElement(ODA_DATA_SOURCE);
+
 		Node userNode = createPropertyNodeWithSubNodeTextValue(testDoc, "user12");
 		odaDs.appendChild(userNode);
-		
-		Node jndiNode = createPropertyNodeWithSubNodeTextValue(testDoc, "JNDI12");
-		odaDs.appendChild(jndiNode);				
-		
-		testDoc.appendChild(odaDs);
-		
-		sut.removeNode(userNode);
-		
 
-		Diff myDiff = DiffBuilder.compare(Input.fromString(controlXml))
-	              .withTest(Input.fromDocument(testDoc))
-	              .build();
+		Node jndiNode = createPropertyNodeWithSubNodeTextValue(testDoc, "JNDI12");
+		odaDs.appendChild(jndiNode);
+
+		testDoc.appendChild(odaDs);
+
+		sut.removeNode(userNode);
+
+		Diff myDiff = DiffBuilder.compare(Input.fromString(controlXml)).withTest(Input.fromDocument(testDoc)).build();
 
 		Assert.assertFalse("XML similar " + myDiff.toString(), myDiff.hasDifferences());
 	}
 
 	@Test
 	public void testRemoveNodeWithParentAndChildren() throws ParserConfigurationException {
-		
-		final String controlXml = "<oda-data-source><property name='odaJndi'>JNDI1</property></oda-data-source>";				
-		
-		Document testDoc = DocumentBuilderFactory.newInstance().newDocumentBuilder()
-		.newDocument();
-		
-		Element odaDs = testDoc.createElement(ODA_DATA_SOURCE);		
-		
-		Node userNode = createPropertyNode(testDoc, "name", "odaUser","user1");
-		odaDs.appendChild(userNode);
-		
-		Node jndiNode = createPropertyNode(testDoc, "name", "odaJndi","JNDI1");
-		odaDs.appendChild(jndiNode);				
-		
-		testDoc.appendChild(odaDs);
-		
-		sut.removeNode(userNode);
-		
 
-		Diff myDiff = DiffBuilder.compare(Input.fromString(controlXml))
-	              .withTest(Input.fromDocument(testDoc))
-	              .build();
+		final String controlXml = "<oda-data-source><property name='odaJndi'>JNDI1</property></oda-data-source>";
+
+		Document testDoc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+
+		Element odaDs = testDoc.createElement(ODA_DATA_SOURCE);
+
+		Node userNode = createPropertyNode(testDoc, "name", "odaUser", "user1");
+		odaDs.appendChild(userNode);
+
+		Node jndiNode = createPropertyNode(testDoc, "name", "odaJndi", "JNDI1");
+		odaDs.appendChild(jndiNode);
+
+		testDoc.appendChild(odaDs);
+
+		sut.removeNode(userNode);
+
+		Diff myDiff = DiffBuilder.compare(Input.fromString(controlXml)).withTest(Input.fromDocument(testDoc)).build();
 
 		Assert.assertFalse("XML similar " + myDiff.toString(), myDiff.hasDifferences());
 	}
-	
+
 	@Test
 	public void testSave() throws FileNotFoundException, TransformerFactoryConfigurationError, TransformerException {
 		String destFilePath = validSrcFile.getParentFile().getAbsolutePath() + java.io.File.separator + "destFile.xml";
