@@ -61,17 +61,6 @@ public class JAXPDocHelperTest {
 		assertNotNull(doc);
 	}
 
-	@Ignore
-	@Test
-	public void testSearch() {
-		fail("Not yet implemented");
-	}
-
-	@Ignore
-	@Test
-	public void testRemoveNodes() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testRemoveNodeEmptyMock() {
