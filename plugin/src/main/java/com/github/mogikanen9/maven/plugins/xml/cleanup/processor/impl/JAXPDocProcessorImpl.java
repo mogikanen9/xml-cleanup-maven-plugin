@@ -3,6 +3,8 @@ package com.github.mogikanen9.maven.plugins.xml.cleanup.processor.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.xml.xpath.XPathExpressionException;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
@@ -36,30 +38,14 @@ public final class JAXPDocProcessorImpl implements DocProcessor {
 
 			boolean needToSave = false;
 			for (Rule rule : param.getRules()) {
-				if (rule instanceof XPathRule) {
-					NodeList nodeList = helper.search(doc, rule.getRuleDefinition());
-
-					if (nodeList != null && nodeList.getLength() > 0) {
-						
-						if (!needToSave) {
-							needToSave = true;
-						}
-						
-						if (param.getAction().equals(Action.REMOVE_NODE)) {
-							helper.removeNodes(nodeList);
-							processedNodes.put(rule, nodeList.getLength());
-						} else {
-							throw new DocProcessorException(String.format("Unsupported action->%s", param.getAction()));
-						}
-					}
-
-				} else {
-					throw new DocProcessorException(
-							String.format("Only XPathRule types are supported. Received rule->", rule.getClass()));
+				int processedNodesCnt = applyRule(rule, doc, param);
+				if (processedNodesCnt > 0) {
+					processedNodes.put(rule, processedNodesCnt);
+					needToSave = true;
 				}
 			}
 
-			if(needToSave){
+			if (needToSave) {
 				helper.save(doc, param.getDestFilePath());
 			}
 
@@ -69,6 +55,32 @@ public final class JAXPDocProcessorImpl implements DocProcessor {
 			throw new DocProcessorException(e.getMessage(), e);
 		}
 
+	}
+
+	protected int applyRule(Rule rule, Document doc, Param param)
+			throws XPathExpressionException, DocProcessorException {
+		
+		int processedNodes = -1;
+		
+		if (rule instanceof XPathRule) {
+			
+			NodeList nodeList = helper.search(doc, rule.getRuleDefinition());
+
+			if (nodeList != null && nodeList.getLength() > 0) {
+
+				if (param.getAction().equals(Action.REMOVE_NODE)) {
+					helper.removeNodes(nodeList);
+					processedNodes = nodeList.getLength();
+				} else {
+					throw new DocProcessorException(String.format("Unsupported action->%s", param.getAction()));
+				}
+			}
+
+		} else {
+			throw new DocProcessorException(
+					String.format("Only XPathRule types are supported. Received rule->%s", rule.getClass()));
+		}
+		return processedNodes;
 	}
 
 }
