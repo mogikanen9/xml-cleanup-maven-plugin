@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report>
+    <property name="description">Movies</property>
+    <property name="author">Unknown</property>
+    <property name="year">2018</property>
+    <list>
+    	<movie>
+    		<name>Venom</name>
+    		<score>9</score>
+    	</movie>
+    	<movie>
+    		<name>Mission Impossible: Phantom</name>
+    		<score>6</score>
+    	</movie>
+    </list>
+</report>
