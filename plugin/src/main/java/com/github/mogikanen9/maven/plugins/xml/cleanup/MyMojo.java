@@ -81,7 +81,7 @@ public class MyMojo extends AbstractMojo {
 
 		validateParams();
 
-		List<Rule> rules = xPathRules.stream().map(rule -> new XPathRule(rule)).collect(Collectors.toList());
+		List<Rule> rules = xPathRules.stream().map(XPathRule::new).collect(Collectors.toList());
 
 		try {
 
@@ -128,7 +128,7 @@ public class MyMojo extends AbstractMojo {
 		}
 
 		if (xPathRules == null || xPathRules.isEmpty()) {
-			throw new MojoExecutionException(String.format("No rules attributes conigured! Nothing to cleanup!"));
+			throw new MojoExecutionException("No rules attributes conigured! Nothing to cleanup!");
 		}
 	}
 }
