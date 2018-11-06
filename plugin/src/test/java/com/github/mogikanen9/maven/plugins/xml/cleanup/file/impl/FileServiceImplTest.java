@@ -1,8 +1,10 @@
 package com.github.mogikanen9.maven.plugins.xml.cleanup.file.impl;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,16 +14,14 @@ import java.io.IOException;
 import java.util.List;
 
 import org.codehaus.plexus.util.IOUtil;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import com.github.mogikanen9.maven.plugins.xml.cleanup.MyMojoTest;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.file.FileService;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.file.FileServiceException;
-import com.github.mogikanen9.maven.plugins.xml.cleanup.file.impl.ExtensionFileFilter;
-import com.github.mogikanen9.maven.plugins.xml.cleanup.file.impl.FileServiceImpl;
 
 /**
  * 
@@ -32,12 +32,12 @@ public class FileServiceImplTest {
 
 	FileService sut;
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		sut = new FileServiceImpl();
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() throws Exception {
 		sut = null;
 	}
@@ -59,9 +59,9 @@ public class FileServiceImplTest {
 		assertTrue(destFilePath.endsWith("samples-dest" + File.separator + "file1.xml"));
 	}
 
-	@Test(expected = FileServiceException.class)
+	@Test
 	public void testRemoveFileIfAlreadyExistsNull() throws FileServiceException {
-		sut.removeFileIfAlreadyExists(null);
+		assertThrows(FileServiceException.class, () -> sut.removeFileIfAlreadyExists(null));
 	}
 
 	@Test
@@ -70,7 +70,7 @@ public class FileServiceImplTest {
 		assertFalse(rs);
 	}
 
-	@Ignore
+	@Disabled
 	@Test
 	public void testRemoveFileIfAlreadyExists() throws FileServiceException, FileNotFoundException, IOException {
 
