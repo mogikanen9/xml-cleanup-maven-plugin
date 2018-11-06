@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 
@@ -17,22 +16,16 @@ import org.hamcrest.CoreMatchers;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
-import org.xmlunit.builder.Input;
 
 import com.github.mogikanen9.maven.plugins.test.mockito.rule.MockitoInitRule;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.processor.Action;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.processor.DocProcessorException;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.processor.Param;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.processor.Result;
-import com.github.mogikanen9.maven.plugins.xml.cleanup.processor.impl.JAXPDocHelper;
-import com.github.mogikanen9.maven.plugins.xml.cleanup.processor.impl.JAXPDocProcessorImpl;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.processor.rule.Rule;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.processor.rule.impl.XPathRule;
 

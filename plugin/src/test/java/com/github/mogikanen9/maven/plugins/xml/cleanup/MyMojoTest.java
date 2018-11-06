@@ -5,7 +5,6 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,7 +21,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import com.github.mogikanen9.maven.plugins.test.mockito.rule.MockitoInitRule;
-import com.github.mogikanen9.maven.plugins.xml.cleanup.MyMojo;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.file.FileService;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.file.FileServiceException;
 import com.github.mogikanen9.maven.plugins.xml.cleanup.file.impl.ExtensionFileFilter;
