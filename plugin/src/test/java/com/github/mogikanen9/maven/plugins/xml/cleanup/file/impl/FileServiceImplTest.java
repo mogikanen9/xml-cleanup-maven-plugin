@@ -1,6 +1,7 @@
 package com.github.mogikanen9.maven.plugins.xml.cleanup.file.impl;
 
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -11,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
 
 import org.codehaus.plexus.util.IOUtil;
@@ -86,4 +88,19 @@ public class FileServiceImplTest {
 		assertTrue(rs);
 	}
 
+	@Test
+	public void testGenerateFileCopyEx() throws FileServiceException {		
+		assertThrows(FileServiceException.class, ()->{
+			sut.generateFileCopy("garbage");
+		});
+	}
+	
+	@Test
+	public void testGenerateFileCopy() throws FileServiceException {
+		Path existingFile = (new File(MyMojoTest.class.getResource("/samples/file1.xml").getPath())).toPath();
+		String existingFilePath = existingFile.toFile().getAbsolutePath();
+		String rs = sut.generateFileCopy(existingFilePath);
+		assertNotNull(rs);
+		assertEquals(existingFilePath, rs);
+	}
 }
