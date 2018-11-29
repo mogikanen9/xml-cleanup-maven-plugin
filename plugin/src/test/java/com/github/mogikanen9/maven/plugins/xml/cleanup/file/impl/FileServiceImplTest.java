@@ -88,19 +88,4 @@ public class FileServiceImplTest {
 		assertTrue(rs);
 	}
 
-	@Test
-	public void testGenerateFileCopyEx() throws FileServiceException {		
-		assertThrows(FileServiceException.class, ()->{
-			sut.generateFileCopy("garbage");
-		});
-	}
-	
-	@Test
-	public void testGenerateFileCopy() throws FileServiceException {
-		Path existingFile = (new File(MyMojoTest.class.getResource("/samples/file1.xml").getPath())).toPath();
-		String existingFilePath = existingFile.toFile().getAbsolutePath();
-		String rs = sut.generateFileCopy(existingFilePath);
-		assertNotNull(rs);
-		assertEquals(existingFilePath, rs);
-	}
 }

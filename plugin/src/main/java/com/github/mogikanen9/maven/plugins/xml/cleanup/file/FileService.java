@@ -13,5 +13,4 @@ public interface FileService {
 	String buildDestFilePath(String sourceFilePath, File destFolder) throws FileServiceException;
 	boolean removeFileIfAlreadyExists(String filePath) throws FileServiceException;
 	boolean fileExists(String filePath) throws FileServiceException;
-	String generateFileCopy(String filePath) throws FileServiceException;
 }

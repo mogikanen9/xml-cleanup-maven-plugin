@@ -61,17 +61,6 @@ public final class FileServiceParamValidator implements FileService {
 		}
 	}
 
-	@Override
-	public String generateFileCopy(String filePath) throws FileServiceException {
-		if (StringUtils.isEmpty(filePath)) {
-			throw new FileServiceException("generateFileCopy(): Param 'filePath' cannot be null or empty.");
-		} else if (!(new File(filePath).exists())) {
-			throw new FileServiceException(String
-					.format("generateFileCopy(): File %s does not exists - cannnot generate a copy of it", filePath));
-		} else {
-			return target.generateFileCopy(filePath);
-		}
-	}
 
 	@Override
 	public boolean fileExists(String filePath) throws FileServiceException {

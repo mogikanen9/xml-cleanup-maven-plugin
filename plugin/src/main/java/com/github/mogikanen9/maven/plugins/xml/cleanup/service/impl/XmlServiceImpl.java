@@ -42,11 +42,10 @@ public final class XmlServiceImpl implements Service {
 			String srcFilePath = request.getSrcFilePath();
 			
 			if(fileService.fileExists(destFilePath)) {
-				String copyFilePath = fileService.generateFileCopy(destFilePath);
-				logger.debug(
-						String.format("copyFilePath->'%s", copyFilePath));
-				srcFilePath = copyFilePath;
-				
+				if(logger.isInfoEnabled()) {
+				logger.info(
+						String.format("destFilePath->'%s' already exists and will be replaced with the new version", destFilePath));
+				}				
 			}
 			
 			//boolean removed = fileService.removeFileIfAlreadyExists(destFilePath);
